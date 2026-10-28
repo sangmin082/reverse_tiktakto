@@ -1,0 +1,956 @@
+{
+  "sourceLanguage": "ko",
+  "strings": {
+    "'위험한 칸 표시'를 켜면 지금 두면 지는 칸에 빨간 점이 찍힙니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on “Show danger” to mark cells that would lose right now with a red dot."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "'위험한 칸 표시'를 켜면 지금 두면 지는 칸에 빨간 점이 찍힙니다."
+          }
+        }
+      }
+    },
+    "3×3과 4×4는 3개, 5×5는 4개가 한 줄이면 패배입니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On 3×3 and 4×4 three in a row loses; on 5×5 it takes four."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3×3과 4×4는 3개, 5×5는 4개가 한 줄이면 패배입니다."
+          }
+        }
+      }
+    },
+    "3목이면 패배": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 in a row loses"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3목이면 패배"
+          }
+        }
+      }
+    },
+    "4×4 끝내기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4×4 Endgame"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4×4 끝내기"
+          }
+        }
+      }
+    },
+    "4목이면 패배": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4 in a row loses"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4목이면 패배"
+          }
+        }
+      }
+    },
+    "O 승리! X가 줄을 완성했습니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O wins! X completed a line"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O 승리! X가 줄을 완성했습니다"
+          }
+        }
+      }
+    },
+    "O 차례": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O to move"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O 차례"
+          }
+        }
+      }
+    },
+    "O 후공": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O second"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O 후공"
+          }
+        }
+      }
+    },
+    "X 선공": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "X first"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "X 선공"
+          }
+        }
+      }
+    },
+    "X 승리! O가 줄을 완성했습니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "X wins! O completed a line"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "X 승리! O가 줄을 완성했습니다"
+          }
+        }
+      }
+    },
+    "X 차례": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "X to move"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "X 차례"
+          }
+        }
+      }
+    },
+    "X가 먼저, 한 칸씩 번갈아 둡니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "X goes first; players take turns placing one mark."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "X가 먼저, 한 칸씩 번갈아 둡니다."
+          }
+        }
+      }
+    },
+    "규칙 한 장": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Rules"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "규칙 한 장"
+          }
+        }
+      }
+    },
+    "규칙 한 장 보기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The rules on one page"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "규칙 한 장 보기"
+          }
+        }
+      }
+    },
+    "그 칸에 두면 내 줄이 완성됩니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Playing there completes your own line."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "그 칸에 두면 내 줄이 완성됩니다."
+          }
+        }
+      }
+    },
+    "나": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "나"
+          }
+        }
+      }
+    },
+    "넓은 판에서도 원리는 같습니다. 당신은 O, 이기는 한 수를 찾으세요.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The idea is the same on a bigger board. You are O — find the winning move."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "넓은 판에서도 원리는 같습니다. 당신은 O, 이기는 한 수를 찾으세요."
+          }
+        }
+      }
+    },
+    "네 개의 미션으로 감 잡기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Four missions to get the feel"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "네 개의 미션으로 감 잡기"
+          }
+        }
+      }
+    },
+    "다시 해보기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try again"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다시 해보기"
+          }
+        }
+      }
+    },
+    "당신 차례입니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your move"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "당신 차례입니다"
+          }
+        }
+      }
+    },
+    "당신은 O입니다. 상대에게 둘 곳이 '지는 칸'뿐이도록 만드세요.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are O. Leave your opponent nothing but losing cells."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "당신은 O입니다. 상대에게 둘 곳이 '지는 칸'뿐이도록 만드세요."
+          }
+        }
+      }
+    },
+    "당신은 X입니다. 자기 말 3개가 한 줄이 되면 집니다. 줄이 완성되지 않는 칸에 두세요.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are X. Three of your own in a row loses. Play a cell that doesn't complete a line."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "당신은 X입니다. 자기 말 3개가 한 줄이 되면 집니다. 줄이 완성되지 않는 칸에 두세요."
+          }
+        }
+      }
+    },
+    "당장은 안전해 보여도 두 수 뒤에 몰리는 칸이 있습니다. 끝까지 버틸 수 있는 단 하나의 칸을 찾으세요.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some cells look safe but get you cornered two moves later. Find the only cell that survives to the end."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "당장은 안전해 보여도 두 수 뒤에 몰리는 칸이 있습니다. 끝까지 버틸 수 있는 단 하나의 칸을 찾으세요."
+          }
+        }
+      }
+    },
+    "둘 곳이 '지는 칸'뿐인 상대를 만드는 것이 이기는 방법입니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You win by leaving your opponent with only losing cells."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "둘 곳이 '지는 칸'뿐인 상대를 만드는 것이 이기는 방법입니다."
+          }
+        }
+      }
+    },
+    "리버스 틱택토": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reverse Tic-Tac-Toe"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "리버스 틱택토"
+          }
+        }
+      }
+    },
+    "먼저 줄을 만드는 쪽이 집니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Whoever makes a line first loses"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "먼저 줄을 만드는 쪽이 집니다"
+          }
+        }
+      }
+    },
+    "목록으로": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back to list"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "목록으로"
+          }
+        }
+      }
+    },
+    "몰아붙이기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Corner Them"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "몰아붙이기"
+          }
+        }
+      }
+    },
+    "무르기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "무르기"
+          }
+        }
+      }
+    },
+    "무승부 — 아무도 줄을 만들지 않았습니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Draw — nobody made a line"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "무승부 — 아무도 줄을 만들지 않았습니다"
+          }
+        }
+      }
+    },
+    "배우기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Learn"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "배우기"
+          }
+        }
+      }
+    },
+    "보통": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Normal"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "보통"
+          }
+        }
+      }
+    },
+    "상대에게 아직 안전한 칸이 남습니다. 다시 생각해 보세요.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your opponent still has a safe cell. Think again."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "상대에게 아직 안전한 칸이 남습니다. 다시 생각해 보세요."
+          }
+        }
+      }
+    },
+    "새로 시작": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restart"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새로 시작"
+          }
+        }
+      }
+    },
+    "선·후공을 번갈아 한 판씩": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alternate first and second"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "선·후공을 번갈아 한 판씩"
+          }
+        }
+      }
+    },
+    "숨은 함정": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden Trap"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "숨은 함정"
+          }
+        }
+      }
+    },
+    "쉬움": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Easy"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "쉬움"
+          }
+        }
+      }
+    },
+    "승리! 컴퓨터가 줄을 완성했습니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You win! The computer made a line"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "승리! 컴퓨터가 줄을 완성했습니다"
+          }
+        }
+      }
+    },
+    "어려움": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hard"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "어려움"
+          }
+        }
+      }
+    },
+    "완료": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "완료"
+          }
+        }
+      }
+    },
+    "위험": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "danger"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "위험"
+          }
+        }
+      }
+    },
+    "위험한 칸 표시": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show danger"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "위험한 칸 표시"
+          }
+        }
+      }
+    },
+    "자기 말이 가로·세로·대각선으로 한 줄이 되면 그 사람이 집니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If your own marks form a line — across, down or diagonal — you lose."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "자기 말이 가로·세로·대각선으로 한 줄이 되면 그 사람이 집니다."
+          }
+        }
+      }
+    },
+    "작전 노트": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Strategy Notes"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "작전 노트"
+          }
+        }
+      }
+    },
+    "전적 %lld승 %lld패 %lld무": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record %1$lldW %2$lldL %3$lldD"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "전적 %1$lld승 %2$lld패 %3$lld무"
+          }
+        }
+      }
+    },
+    "정답! 이 칸이라면 끝까지 버틸 수 있습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Correct! From here you can hold out to the end."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "정답! 이 칸이라면 끝까지 버틸 수 있습니다."
+          }
+        }
+      }
+    },
+    "정답! 이제 상대는 어디에 두든 줄이 완성됩니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Correct! Now every move your opponent has completes a line."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "정답! 이제 상대는 어디에 두든 줄이 완성됩니다."
+          }
+        }
+      }
+    },
+    "좋아요! 줄을 피했습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nice! You avoided the line."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "좋아요! 줄을 피했습니다."
+          }
+        }
+      }
+    },
+    "줄을 만들면 진다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make a Line, Lose"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "줄을 만들면 진다"
+          }
+        }
+      }
+    },
+    "지금은 안전하지만, 상대가 잘 두면 결국 몰리게 됩니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe for now, but with good play your opponent will corner you."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지금은 안전하지만, 상대가 잘 두면 결국 몰리게 됩니다."
+          }
+        }
+      }
+    },
+    "컴퓨터": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Computer"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "컴퓨터"
+          }
+        }
+      }
+    },
+    "컴퓨터 대전": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "vs Computer"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "컴퓨터 대전"
+          }
+        }
+      }
+    },
+    "컴퓨터가 생각 중…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Computer is thinking…"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "컴퓨터가 생각 중…"
+          }
+        }
+      }
+    },
+    "판 한가운데를 기준으로 상대의 수를 뒤집어 따라 두면 웬만해선 지지 않습니다. 어느 판에서 누가 이 작전을 쓸 수 있을지 찾아보세요.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mirroring your opponent's moves through the center of the board is hard to beat. Work out on which board, and for which side, it works."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "판 한가운데를 기준으로 상대의 수를 뒤집어 따라 두면 웬만해선 지지 않습니다. 어느 판에서 누가 이 작전을 쓸 수 있을지 찾아보세요."
+          }
+        }
+      }
+    },
+    "판이 다 찰 때까지 아무도 줄을 만들지 않으면 무승부입니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If the board fills up without a line, it's a draw."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "판이 다 찰 때까지 아무도 줄을 만들지 않으면 무승부입니다."
+          }
+        }
+      }
+    },
+    "패배… 줄을 완성하고 말았습니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You lose… you completed a line"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "패배… 줄을 완성하고 말았습니다"
+          }
+        }
+      }
+    },
+    "한 기기로 번갈아 두기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pass and play on one device"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "한 기기로 번갈아 두기"
+          }
+        }
+      }
+    },
+    "한 판 더": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play again"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "한 판 더"
+          }
+        }
+      }
+    },
+    "함께 하기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Two Players"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "함께 하기"
+          }
+        }
+      }
+    },
+    "vs": {
+      "shouldTranslate": false
+    },
+    "—": {
+      "shouldTranslate": false
+    }
+  },
+  "version": "1.0"
+}

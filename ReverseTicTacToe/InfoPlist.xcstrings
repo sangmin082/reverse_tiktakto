@@ -1,0 +1,22 @@
+{
+  "sourceLanguage": "ko",
+  "strings": {
+    "CFBundleDisplayName": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reverse Tic-Tac-Toe"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "리버스 틱택토"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

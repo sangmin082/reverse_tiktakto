@@ -1,0 +1,10 @@
+DerivedData/
+build/
+xcuserdata/
+*.ipa
+*.xcarchive
+*.log
+.DS_Store
+.build/
+.swiftpm/
+Package.resolved

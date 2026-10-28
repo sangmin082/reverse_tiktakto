@@ -1,0 +1,35 @@
+name: iOS
+
+on:
+  push:
+    branches: [main, 'claude/**']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  # 엔진·AI 단위 테스트 (Package.swift — 앱 UI 없이 규칙과 AI만 검증)
+  test:
+    name: Engine tests
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: swift test
+        run: swift test
+
+  # 서명 없이 컴파일 검증 (Apple Developer 계정 불필요)
+  # TestFlight 업로드는 .github/workflows/testflight.yml (fastlane) 사용
+  build:
+    name: Build (unsigned)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build (no code signing)
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project ReverseTicTacToe.xcodeproj \
+            -scheme ReverseTicTacToe \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            CODE_SIGNING_ALLOWED=NO
