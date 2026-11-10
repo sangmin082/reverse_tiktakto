@@ -43,13 +43,7 @@ Tests/TicTacCoreTests/   엔진·AI 단위 테스트 (Package.swift)
 CI (GitHub Actions):
 
 - `.github/workflows/ios.yml` — push/PR 시 엔진 테스트 + 서명 없이 컴파일 검증
-- `.github/workflows/testflight.yml` — main 푸시 또는 수동 실행 시 서명 후 TestFlight 업로드
-  (fastlane match 사용, Mac 불필요). Bundle ID가 없으면 자동 등록한다.
+- `.github/workflows/testflight.yml` — Actions 탭 Run workflow 또는 `v*` 태그 푸시 시 TestFlight 업로드
+  (reverse_omok과 같은 방식: `scripts/asc.py`가 번들 ID 등록·빌드 번호 결정, fastlane match 서명)
 
-TestFlight 배포 전 준비:
-
-1. 이 리포에 시크릿 7개 등록 (reverse_chess와 동일한 값):
-   `APP_STORE_CONNECT_KEY_ID` `APP_STORE_CONNECT_ISSUER_ID` `APP_STORE_CONNECT_KEY`
-   `APPLE_TEAM_ID` `MATCH_GIT_URL` `MATCH_GIT_BASIC_AUTHORIZATION` `MATCH_PASSWORD`
-2. App Store Connect → 앱 → `+` → 신규 앱: 번들 ID `com.reversetictactoe.game`
-   (App Store Connect API로는 앱 레코드를 만들 수 없음)
+시크릿과 첫 배포 절차는 [docs/RELEASE.md](./docs/RELEASE.md) 참고.
