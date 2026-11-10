@@ -29,7 +29,8 @@ struct BoardView: View {
                     .allowsHitTesting(false)
 
                 if let first = losingLine.first, let last = losingLine.last {
-                    LosingLine(from: center(of: first, cell: cell), to: center(of: last, cell: cell))
+                    LosingLine(from: center(of: first, cell: cell), to: center(of: last, cell: cell),
+                               width: max(2, cell * 0.07))
                         .allowsHitTesting(false)
                 }
             }
@@ -48,29 +49,37 @@ struct BoardView: View {
         let player = position.player(at: index)
         let isDanger = player == nil && dangerMask & (1 << UInt32(index)) != 0
 
-        Button {
-            onTap(index)
-        } label: {
-            ZStack {
-                Rectangle()
-                    .fill(index == lastMove ? Theme.cellLastMove : Color.clear)
+        // 말은 버튼 밖에 그린다: 비활성 버튼은 iOS가 흐리게 칠하므로 둔 말까지 회색이 된다
+        ZStack {
+            Rectangle()
+                .fill(index == lastMove ? Theme.cellLastMove : Color.clear)
 
-                if let player {
-                    MarkView(player: player)
-                        .padding(cellSize * 0.2)
-                        .id("\(index)-\(player.rawValue)")
-                } else if isDanger {
-                    Circle()
-                        .fill(Theme.accent.opacity(0.55))
-                        .frame(width: cellSize * 0.12, height: cellSize * 0.12)
+            Button {
+                onTap(index)
+            } label: {
+                ZStack {
+                    Color.clear
+                    if isDanger {
+                        Circle()
+                            .fill(Theme.accent.opacity(0.55))
+                            .frame(width: cellSize * 0.12, height: cellSize * 0.12)
+                    }
                 }
+                .contentShape(Rectangle())
             }
-            .contentShape(Rectangle())
+            .buttonStyle(.plain)
+            .disabled(!isInteractive || player != nil)
+            .accessibilityLabel(accessibilityLabel(index, player: player, isDanger: isDanger))
+            .accessibilityIdentifier("cell-\(index)")
+
+            if let player {
+                MarkView(player: player)
+                    .padding(cellSize * 0.2)
+                    .id("\(index)-\(player.rawValue)")
+                    .allowsHitTesting(false)
+                    .accessibilityHidden(true)
+            }
         }
-        .buttonStyle(.plain)
-        .disabled(!isInteractive || player != nil)
-        .accessibilityLabel(accessibilityLabel(index, player: player, isDanger: isDanger))
-        .accessibilityIdentifier("cell-\(index)")
     }
 
     private func accessibilityLabel(_ index: Int, player: Player?, isDanger: Bool) -> Text {
@@ -143,6 +152,7 @@ private struct XShape: Shape {
 private struct LosingLine: View {
     let from: CGPoint
     let to: CGPoint
+    let width: CGFloat
     @State private var progress: CGFloat = 0
 
     var body: some View {
@@ -153,7 +163,7 @@ private struct LosingLine: View {
             path.addLine(to: CGPoint(x: to.x + dx, y: to.y + dy))
         }
         .trim(from: 0, to: progress)
-        .stroke(Theme.accent, style: StrokeStyle(lineWidth: 7, lineCap: .round))
+        .stroke(Theme.accent, style: StrokeStyle(lineWidth: width, lineCap: .round))
         .onAppear {
             withAnimation(.easeInOut(duration: 0.45).delay(0.15)) { progress = 1 }
         }
