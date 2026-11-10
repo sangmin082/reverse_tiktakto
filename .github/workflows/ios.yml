@@ -10,7 +10,7 @@ jobs:
   # 엔진·AI 단위 테스트 (Package.swift — 앱 UI 없이 규칙과 AI만 검증)
   test:
     name: Engine tests
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v4
       - name: swift test
@@ -20,7 +20,7 @@ jobs:
   # TestFlight 업로드는 .github/workflows/testflight.yml (fastlane) 사용
   build:
     name: Build (unsigned)
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v4
 
