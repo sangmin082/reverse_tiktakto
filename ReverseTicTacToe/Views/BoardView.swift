@@ -70,6 +70,7 @@ struct BoardView: View {
         .buttonStyle(.plain)
         .disabled(!isInteractive || player != nil)
         .accessibilityLabel(accessibilityLabel(index, player: player, isDanger: isDanger))
+        .accessibilityIdentifier("cell-\(index)")
     }
 
     private func accessibilityLabel(_ index: Int, player: Player?, isDanger: Bool) -> Text {

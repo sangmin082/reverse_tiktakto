@@ -174,6 +174,7 @@ struct GameScreen: View {
             }
 
             statusText
+                .accessibilityIdentifier("status")
                 .font(.system(.title3, design: .serif, weight: .semibold))
                 .foregroundStyle(model.game.result == nil ? Theme.ink : Theme.accent)
                 .lineLimit(1)
