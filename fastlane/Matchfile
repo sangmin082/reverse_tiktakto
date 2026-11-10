@@ -1,0 +1,4 @@
+# 다른 앱들과 같은 인증서 저장소를 쓴다.
+git_url("https://github.com/sangmin082/ios-certificates.git")
+storage_mode("git")
+type("appstore")
