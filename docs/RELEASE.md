@@ -19,7 +19,7 @@
 | `ASC_ISSUER_ID` | 발급자 ID |
 | `ASC_KEY_P8` | `.p8` 파일 내용 전체 (`-----BEGIN PRIVATE KEY-----`부터) |
 | `MATCH_PASSWORD` | match 암호 |
-| `MATCH_GIT_BASIC_AUTHORIZATION` | `사용자명:토큰`을 base64로 인코딩한 값. 토큰은 `ios-certificates`에 쓰기 권한 필요 |
+| `MATCH_GIT_BASIC_AUTHORIZATION` | `사용자명:토큰`을 base64로 인코딩한 값(`printf 'sangmin082:토큰' \| base64 -w0`). 토큰은 `ios-certificates`에 쓰기 권한 필요. 줄바꿈 섞인 값·원문·토큰 단독도 Fastfile이 정리해서 받음 |
 
 다른 앱 저장소에 넣은 값과 같습니다.
 
