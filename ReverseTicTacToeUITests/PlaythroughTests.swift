@@ -107,6 +107,19 @@ final class PlaythroughTests: XCTestCase {
         shot("07 두 번째 판 결과: \(status.label)")
     }
 
+    /// 위험 칸은 화면의 빨간 점뿐 아니라 VoiceOver 라벨에도 '위험'으로 나와야 한다.
+    func test3a_DangerCellAccessibilityLabel() {
+        tapButton("함께 하기")
+        XCTAssertTrue(status.waitForExistence(timeout: 5))
+        // X 0·1, O 15·14 → X 차례에 2번 칸은 X의 줄(0·1·2)이 완성되는 칸
+        for cell in [0, 15, 1, 14] { app.buttons["cell-\(cell)"].tap() }
+        let danger = app.buttons["cell-2"]
+        XCTAssertTrue(danger.waitForExistence(timeout: 5))
+        shot("08a 위험 칸 라벨: \(danger.label)")
+        XCTAssertTrue(danger.label.contains("위험"), "위험 칸 라벨: \(danger.label)")
+        XCTAssertFalse(app.buttons["cell-3"].label.contains("위험"), "안전한 칸 라벨: \(app.buttons["cell-3"].label)")
+    }
+
     func test3_TwoPlayerWithUndo() {
         tapButton("함께 하기")
         XCTAssertTrue(status.waitForExistence(timeout: 5))
