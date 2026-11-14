@@ -8,28 +8,15 @@ enum Player: Int, Sendable, Hashable, CaseIterable {
     var symbol: String { self == .x ? "X" : "O" }
 }
 
-/// 보드 규격: N×N 판에서 자기 말 K개가 한 줄(가로·세로·대각선)이 되면 패배.
+/// 보드 규격: 4×4 판에서 자기 말 3개가 한 줄(가로·세로·대각선)이 되면 패배.
+/// 규격은 하나뿐이지만 엔진은 N×N·K목 일반형으로 계산한다.
 enum Variant: String, Sendable, Hashable, CaseIterable, Identifiable {
-    case classic   // 3×3, 3목 패배
-    case square4   // 4×4, 3목 패배
-    case square5   // 5×5, 4목 패배
+    case square4
 
     var id: String { rawValue }
 
-    var size: Int {
-        switch self {
-        case .classic: 3
-        case .square4: 4
-        case .square5: 5
-        }
-    }
-
-    var lineLength: Int {
-        switch self {
-        case .classic, .square4: 3
-        case .square5: 4
-        }
-    }
+    var size: Int { 4 }
+    var lineLength: Int { 3 }
 
     var cellCount: Int { size * size }
 

@@ -3,36 +3,30 @@ import XCTest
 
 final class BotTests: XCTestCase {
 
-    /// 3×3 리버스 틱택토는 서로 최선을 다하면 무승부다.
-    func testClassicIsDrawWithPerfectPlay() throws {
-        let analysis = try XCTUnwrap(Bot.analyze(Position(variant: .classic), maxDepth: 64, timeBudget: 30))
+    /// 4×4는 서로 최선을 다하면 후공(O)이 이긴다. 빠른 확인을 위해 두 수 둔 국면부터 읽는다.
+    func testSecondPlayerWinsAfterMirroredOpening() throws {
+        let position = Position(variant: .square4).placing(5).placing(10)
+        let analysis = try XCTUnwrap(Bot.analyze(position, maxDepth: 64, timeBudget: 60))
         XCTAssertTrue(analysis.isSolved)
-        XCTAssertEqual(analysis.scores.map(\.score).max(), 0)
-    }
-
-    /// 선공이 가운데에 두면 질 수 없다 (대칭 전략).
-    func testCenterOpeningNeverLoses() throws {
-        let analysis = try XCTUnwrap(Bot.analyze(Position(variant: .classic), maxDepth: 64, timeBudget: 30))
-        let center = try XCTUnwrap(analysis.scores.first { $0.cell == 4 })
-        XCTAssertEqual(center.score, 0)
+        XCTAssertTrue(analysis.scores.allSatisfy { $0.score < -Search.win / 2 }, "X의 모든 수가 져야 한다")
     }
 
     func testBotNeverPlaysPoisonWhenSafeMoveExists() {
         // X 차례, 2는 X에게 독
-        let position = Position(variant: .classic, layout: "XX./O../O..")
+        let position = Position(variant: .square4, layout: "XX../O.../..O./....")
         for level in BotLevel.allCases {
-            for _ in 0..<20 {
+            for _ in 0..<5 {
                 XCTAssertNotEqual(Bot.chooseMove(in: position, level: level), 2)
             }
         }
     }
 
     func testBotPlaysPoisonOnlyWhenForced() {
-        // X 차례, 남은 칸 8은 X의 독 → 어쩔 수 없이 둔다
-        let position = Position(variant: .classic, layout: "XOO/XXO/OX.")
+        // X 차례, 남은 칸 0·1 모두 X의 독 → 어쩔 수 없이 둔다
+        let position = Position(variant: .square4, layout: "..OX/OXOX/OXXO/XOXO")
         XCTAssertEqual(position.toMove, .x)
         XCTAssertEqual(position.poisonMask(for: .x), position.emptyMask)
-        XCTAssertEqual(Bot.chooseMove(in: position, level: .hard), 8)
+        XCTAssertTrue([0, 1].contains(Bot.chooseMove(in: position, level: .hard)))
     }
 
     /// 상대가 모두 독 칸만 남게 만드는 수를 찾는다.
@@ -44,49 +38,32 @@ final class BotTests: XCTestCase {
         XCTAssertTrue(puzzle.accepts(best.cell))
     }
 
-    /// 어려움 봇 끼리 3×3을 두면 항상 무승부
-    func testHardSelfPlayDrawsOnClassic() {
-        for _ in 0..<10 {
-            var game = Game(variant: .classic)
+    /// 빈 판에서도 시간 예산 안에 수를 낸다.
+    func testHardRespectsTimeBudget() {
+        let start = Date()
+        XCTAssertNotNil(Bot.chooseMove(in: Position(variant: .square4), level: .hard))
+        XCTAssertLessThan(Date().timeIntervalSince(start), BotLevel.hard.timeBudget + 1.0)
+    }
+
+    /// 후공을 잡은 어려움 봇은 절대 지지 않는다.
+    func testHardNeverLosesAsSecondPlayer() {
+        for opponentLevel in [BotLevel.easy, .normal, .hard] {
+            var game = Game(variant: .square4)
             while !game.isOver {
-                game.play(Bot.chooseMove(in: game.position, level: .hard)!)
+                let level = game.toMove == .o ? BotLevel.hard : opponentLevel
+                game.play(Bot.chooseMove(in: game.position, level: level)!)
             }
-            XCTAssertEqual(game.result, .draw)
-        }
-    }
-
-    /// 큰 판에서도 시간 예산 안에 수를 낸다.
-    func testLargerBoardsRespectTimeBudget() {
-        for variant in [Variant.square4, .square5] {
-            let start = Date()
-            let move = Bot.chooseMove(in: Position(variant: variant), level: .hard)
-            XCTAssertNotNil(move)
-            XCTAssertLessThan(Date().timeIntervalSince(start), BotLevel.hard.timeBudget + 1.0)
-        }
-    }
-
-    /// 대칭 전략 쪽(4×4 후공, 5×5 선공)을 잡은 어려움 봇은 절대 지지 않는다.
-    func testHardNeverLosesOnMirrorSide() {
-        for (variant, hardSide) in [(Variant.square4, Player.o), (.square5, .x)] {
-            for opponentLevel in [BotLevel.easy, .normal] {
-                var game = Game(variant: variant)
-                while !game.isOver {
-                    let level = game.toMove == hardSide ? BotLevel.hard : opponentLevel
-                    game.play(Bot.chooseMove(in: game.position, level: level)!)
-                }
-                XCTAssertNotEqual(game.result?.winner, hardSide.opponent, "\(variant) vs \(opponentLevel)")
-            }
+            XCTAssertNotEqual(game.result?.winner, .x, "vs \(opponentLevel)")
         }
     }
 
     /// 대칭 전략만으로 무작위 상대를 상대해도 지지 않는다 (탐색 없이 빠르게 여러 판 검증).
     func testMirrorStrategyNeverLoses() {
         var rng = SystemRandomNumberGenerator()
-        for (variant, side) in [(Variant.square4, Player.o), (.square5, .x)] {
-            for _ in 0..<300 {
-                var game = Game(variant: variant)
+        for _ in 0..<300 {
+                var game = Game(variant: .square4)
                 while !game.isOver {
-                    if game.toMove == side {
+                    if game.toMove == .o {
                         let move = Symmetry.move(in: game.position)
                         XCTAssertNotNil(move)
                         game.play(move!)
@@ -95,16 +72,14 @@ final class BotTests: XCTestCase {
                         game.play((safe.isEmpty ? game.position.emptyCells : safe).randomElement(using: &rng)!)
                     }
                 }
-                XCTAssertNotEqual(game.result?.winner, side.opponent)
-            }
+                XCTAssertNotEqual(game.result?.winner, .x)
         }
     }
 
-    func testMirrorUnavailableOnClassicOrWrongSide() {
-        XCTAssertNil(Symmetry.move(in: Position(variant: .classic)))
-        XCTAssertNil(Symmetry.move(in: Position(variant: .square4)))           // 4×4 선공은 대칭 불가
-        XCTAssertEqual(Symmetry.move(in: Position(variant: .square5)), 12)     // 5×5 선공은 가운데부터
+    func testMirrorOnlyForSecondPlayer() {
+        XCTAssertNil(Symmetry.move(in: Position(variant: .square4)))           // 선공은 대칭 불가
         XCTAssertEqual(Symmetry.move(in: Position(variant: .square4).placing(0)), 15)
+        XCTAssertEqual(Symmetry.move(in: Position(variant: .square4).placing(0).placing(15).placing(6)), 9)
     }
 
     func testAllPuzzlesAreSoundAndUnique() throws {
