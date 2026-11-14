@@ -126,10 +126,9 @@ enum Bot {
 }
 
 /// 점대칭 전략.
-/// 짝수 판에서는 후공이, 홀수 판에서는 가운데를 차지한 선공이 상대 수를 판 중심에 대해
-/// 뒤집어 따라 두면 절대 먼저 줄을 완성하지 않는다: 내 줄이 생긴다면 그 거울상인
-/// 상대 줄이 한 수 먼저 완성되었어야 하기 때문이다. 단, 거울상이 자기 자신인 줄
-/// (홀수 판의 가운데를 지나는 줄)이 있으면 성립하지 않으므로 3×3에는 쓰지 않는다.
+/// 후공(O)이 상대 수를 판 중심에 대해 뒤집어 따라 두면 절대 먼저 줄을 완성하지 않는다:
+/// 내 줄이 생긴다면 그 거울상인 상대 줄이 한 수 먼저 완성되었어야 하기 때문이다.
+/// (짝수 판에서는 거울상이 자기 자신인 줄이 없다.)
 enum Symmetry {
     static func mirror(_ cell: Int, in variant: Variant) -> Int {
         variant.cellCount - 1 - cell
@@ -139,20 +138,10 @@ enum Symmetry {
     static func move(in position: Position) -> Int? {
         let variant = position.variant
         let me = position.toMove
-        guard variant.size > 3 else { return nil }
-
-        let isOdd = variant.size % 2 == 1
-        // 대칭 전략을 쓸 수 있는 쪽: 짝수 판은 후공(O), 홀수 판은 선공(X)
-        guard me == (isOdd ? .x : .o) else { return nil }
-
-        let center = variant.cellCount / 2
-        if isOdd {
-            if position.isEmpty(center) { return position.stoneCount == 0 ? center : nil }
-            guard position.player(at: center) == me else { return nil }
-        }
+        guard me == .o else { return nil }
 
         var reply: Int?
-        for cell in 0..<variant.cellCount where !(isOdd && cell == center) {
+        for cell in 0..<variant.cellCount {
             let mirrored = mirror(cell, in: variant)
             switch (position.player(at: cell), position.player(at: mirrored)) {
             case (me?, let other):

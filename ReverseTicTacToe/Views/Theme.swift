@@ -48,10 +48,3 @@ extension BotLevel {
     }
 }
 
-extension Variant {
-    var sizeLabel: String { "\(size)×\(size)" }
-
-    var ruleLabel: LocalizedStringKey {
-        lineLength == 3 ? "3목이면 패배" : "4목이면 패배"
-    }
-}

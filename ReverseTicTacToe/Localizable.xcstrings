@@ -17,66 +17,50 @@
         }
       }
     },
-    "3×3과 4×4는 3개, 5×5는 4개가 한 줄이면 패배입니다.": {
+    "4×4 · 3목이면 패배": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "On 3×3 and 4×4 three in a row loses; on 5×5 it takes four."
+            "value": "4×4 · 3 in a row loses"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "3×3과 4×4는 3개, 5×5는 4개가 한 줄이면 패배입니다."
+            "value": "4×4 · 3목이면 패배"
           }
         }
       }
     },
-    "3목이면 패배": {
+    "4×4 판 · 자기 말 3개가 한 줄이면 패배": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "3 in a row loses"
+            "value": "4×4 board · three of your own in a row loses"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "3목이면 패배"
+            "value": "4×4 판 · 자기 말 3개가 한 줄이면 패배"
           }
         }
       }
     },
-    "4×4 끝내기": {
+    "4×4 판에 X가 먼저, 한 칸씩 번갈아 둡니다.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "4×4 Endgame"
+            "value": "On a 4×4 board, X goes first; players take turns placing one mark."
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "4×4 끝내기"
-          }
-        }
-      }
-    },
-    "4목이면 패배": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "4 in a row loses"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "4목이면 패배"
+            "value": "4×4 판에 X가 먼저, 한 칸씩 번갈아 둡니다."
           }
         }
       }
@@ -177,21 +161,11 @@
         }
       }
     },
-    "X가 먼저, 한 칸씩 번갈아 둡니다.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "X goes first; players take turns placing one mark."
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "X가 먼저, 한 칸씩 번갈아 둡니다."
-          }
-        }
-      }
+    "vs": {
+      "shouldTranslate": false
+    },
+    "—": {
+      "shouldTranslate": false
     },
     "규칙 한 장": {
       "localizations": {
@@ -241,6 +215,22 @@
         }
       }
     },
+    "끝내기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Endgame"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "끝내기"
+          }
+        }
+      }
+    },
     "나": {
       "localizations": {
         "en": {
@@ -253,22 +243,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "나"
-          }
-        }
-      }
-    },
-    "넓은 판에서도 원리는 같습니다. 당신은 O, 이기는 한 수를 찾으세요.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The idea is the same on a bigger board. You are O — find the winning move."
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "넓은 판에서도 원리는 같습니다. 당신은 O, 이기는 한 수를 찾으세요."
           }
         }
       }
@@ -321,18 +295,18 @@
         }
       }
     },
-    "당신은 O입니다. 상대에게 둘 곳이 '지는 칸'뿐이도록 만드세요.": {
+    "당신은 X입니다. 상대에게 둘 곳이 '지는 칸'뿐이도록 만드세요.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "You are O. Leave your opponent nothing but losing cells."
+            "value": "You are X. Leave your opponent nothing but losing cells."
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "당신은 O입니다. 상대에게 둘 곳이 '지는 칸'뿐이도록 만드세요."
+            "value": "당신은 X입니다. 상대에게 둘 곳이 '지는 칸'뿐이도록 만드세요."
           }
         }
       }
@@ -397,6 +371,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "리버스 틱택토"
+          }
+        }
+      }
+    },
+    "마지막 미션입니다. 당신은 O, 이기는 한 수를 찾으세요.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Final mission. You are O — find the winning move."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "마지막 미션입니다. 당신은 O, 이기는 한 수를 찾으세요."
           }
         }
       }
@@ -673,18 +663,18 @@
         }
       }
     },
-    "자기 말이 가로·세로·대각선으로 한 줄이 되면 그 사람이 집니다.": {
+    "자기 말 3개가 가로·세로·대각선으로 한 줄이 되면 그 사람이 집니다.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "If your own marks form a line — across, down or diagonal — you lose."
+            "value": "If three of your own marks form a line — across, down or diagonal — you lose."
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "자기 말이 가로·세로·대각선으로 한 줄이 되면 그 사람이 집니다."
+            "value": "자기 말 3개가 가로·세로·대각선으로 한 줄이 되면 그 사람이 집니다."
           }
         }
       }
@@ -849,18 +839,18 @@
         }
       }
     },
-    "판 한가운데를 기준으로 상대의 수를 뒤집어 따라 두면 웬만해선 지지 않습니다. 어느 판에서 누가 이 작전을 쓸 수 있을지 찾아보세요.": {
+    "판 한가운데를 기준으로 상대의 수를 뒤집어 따라 두면 지지 않는 작전이 있습니다. 선공과 후공 중 누가 쓸 수 있을지 찾아보세요.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mirroring your opponent's moves through the center of the board is hard to beat. Work out on which board, and for which side, it works."
+            "value": "Mirroring your opponent's moves through the center of the board is a strategy that never loses. Work out whether the first or second player can use it."
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "판 한가운데를 기준으로 상대의 수를 뒤집어 따라 두면 웬만해선 지지 않습니다. 어느 판에서 누가 이 작전을 쓸 수 있을지 찾아보세요."
+            "value": "판 한가운데를 기준으로 상대의 수를 뒤집어 따라 두면 지지 않는 작전이 있습니다. 선공과 후공 중 누가 쓸 수 있을지 찾아보세요."
           }
         }
       }
@@ -944,12 +934,6 @@
           }
         }
       }
-    },
-    "vs": {
-      "shouldTranslate": false
-    },
-    "—": {
-      "shouldTranslate": false
     }
   },
   "version": "1.0"

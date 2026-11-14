@@ -2,7 +2,6 @@ import SwiftUI
 
 struct HomeView: View {
     @AppStorage("botLevel") private var botLevel: BotLevel = .normal
-    @AppStorage("variant") private var variant: Variant = .classic
     @State private var showRules = false
 
     var body: some View {
@@ -42,10 +41,10 @@ struct HomeView: View {
 
     private var wordmark: some View {
         VStack(alignment: .leading, spacing: 14) {
-            // 미니 판: 가운데 줄 세 개의 X에 버밀리언 줄 — 줄을 만든 쪽이 진다
+            // 미니 판: 세 개의 X에 버밀리언 줄 — 줄을 만든 쪽이 진다
             BoardView(
-                position: Position(variant: .classic, layout: ".O./XXX/..O"),
-                losingLine: [3, 4, 5],
+                position: Position(variant: .square4, layout: ".O../XXX./...O/...."),
+                losingLine: [4, 5, 6],
                 isInteractive: false
             )
             .frame(width: 64, height: 64)
@@ -68,12 +67,7 @@ struct HomeView: View {
 
     private var menu: some View {
         VStack(alignment: .leading, spacing: 0) {
-            // 판 크기
-            textToggle(Variant.allCases, selection: $variant) { option in
-                Text(verbatim: option.sizeLabel)
-            }
-            .padding(.bottom, 6)
-            Text(variant.ruleLabel)
+            Text("4×4 판 · 자기 말 3개가 한 줄이면 패배")
                 .font(.caption)
                 .foregroundStyle(Theme.inkSoft)
                 .padding(.bottom, 18)
@@ -82,7 +76,7 @@ struct HomeView: View {
                 TutorialView()
             }
             menuRow(title: "컴퓨터 대전", detail: "선·후공을 번갈아 한 판씩") {
-                GameScreen(mode: .vsBot(botLevel), variant: variant)
+                GameScreen(mode: .vsBot(botLevel))
             }
 
             textToggle(BotLevel.allCases, selection: $botLevel) { level in
@@ -92,7 +86,7 @@ struct HomeView: View {
             .padding(.bottom, 18)
 
             menuRow(title: "함께 하기", detail: "한 기기로 번갈아 두기") {
-                GameScreen(mode: .twoPlayer, variant: variant)
+                GameScreen(mode: .twoPlayer)
             }
             Rectangle().fill(Theme.hairline).frame(height: 1)
         }
@@ -166,9 +160,8 @@ struct HomeView: View {
                         .padding(.top, 28)
 
                     VStack(alignment: .leading, spacing: 12) {
-                        ruleLine("X가 먼저, 한 칸씩 번갈아 둡니다.")
-                        ruleLine("자기 말이 가로·세로·대각선으로 한 줄이 되면 그 사람이 집니다.")
-                        ruleLine("3×3과 4×4는 3개, 5×5는 4개가 한 줄이면 패배입니다.")
+                        ruleLine("4×4 판에 X가 먼저, 한 칸씩 번갈아 둡니다.")
+                        ruleLine("자기 말 3개가 가로·세로·대각선으로 한 줄이 되면 그 사람이 집니다.")
                         ruleLine("판이 다 찰 때까지 아무도 줄을 만들지 않으면 무승부입니다.")
                         ruleLine("둘 곳이 '지는 칸'뿐인 상대를 만드는 것이 이기는 방법입니다.")
                     }
@@ -179,7 +172,7 @@ struct HomeView: View {
                         .padding(.top, 8)
 
                     VStack(alignment: .leading, spacing: 12) {
-                        ruleLine("판 한가운데를 기준으로 상대의 수를 뒤집어 따라 두면 웬만해선 지지 않습니다. 어느 판에서 누가 이 작전을 쓸 수 있을지 찾아보세요.")
+                        ruleLine("판 한가운데를 기준으로 상대의 수를 뒤집어 따라 두면 지지 않는 작전이 있습니다. 선공과 후공 중 누가 쓸 수 있을지 찾아보세요.")
                         ruleLine("'위험한 칸 표시'를 켜면 지금 두면 지는 칸에 빨간 점이 찍힙니다.")
                     }
 

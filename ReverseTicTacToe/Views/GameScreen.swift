@@ -11,17 +11,15 @@ enum GameMode: Hashable {
 @Observable
 final class GameModel {
     let mode: GameMode
-    let variant: Variant
     private(set) var game: Game
     /// 컴퓨터 대전에서 사람이 잡은 쪽 (판마다 선·후공을 번갈아 맡는다)
     private(set) var humanSide: Player = .x
     private(set) var isThinking = false
     @ObservationIgnored private var botTask: Task<Void, Never>?
 
-    init(mode: GameMode, variant: Variant) {
+    init(mode: GameMode) {
         self.mode = mode
-        self.variant = variant
-        game = Game(variant: variant)
+        game = Game(variant: .square4)
     }
 
     var botLevel: BotLevel? {
@@ -65,14 +63,14 @@ final class GameModel {
         botTask?.cancel()
         isThinking = false
         if botLevel != nil { humanSide = humanSide.opponent }
-        game = Game(variant: variant)
+        game = Game(variant: .square4)
         start()
     }
 
     private func afterMove() {
         if let result = game.result {
             if let level = botLevel {
-                Stats.add(result, human: humanSide, variant: variant, level: level)
+                Stats.add(result, human: humanSide, level: level)
                 result.winner == humanSide ? Haptics.success() : Haptics.failure()
             } else {
                 Haptics.failure()
@@ -108,8 +106,8 @@ struct GameScreen: View {
     @State private var model: GameModel
     @AppStorage("showDangerHints") private var showDangerHints = true
 
-    init(mode: GameMode, variant: Variant) {
-        _model = State(initialValue: GameModel(mode: mode, variant: variant))
+    init(mode: GameMode) {
+        _model = State(initialValue: GameModel(mode: mode))
     }
 
     var body: some View {
@@ -142,10 +140,7 @@ struct GameScreen: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                HStack(spacing: 0) {
-                    Text(verbatim: "\(model.variant.sizeLabel) · ")
-                    Text(model.variant.ruleLabel)
-                }
+                Text("4×4 · 3목이면 패배")
                 .font(.system(.subheadline, design: .serif, weight: .semibold))
                 .foregroundStyle(Theme.ink)
             }
@@ -251,7 +246,7 @@ struct GameScreen: View {
             }
 
             if let level = model.botLevel {
-                let record = Stats.record(for: model.variant, level: level)
+                let record = Stats.record(for: level)
                 if record.total > 0 {
                     HStack(spacing: 6) {
                         Text(level.label)
