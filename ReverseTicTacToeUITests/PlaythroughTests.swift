@@ -34,14 +34,13 @@ final class PlaythroughTests: XCTestCase {
 
     private var status: XCUIElement { app.staticTexts["status"] }
 
-    /// 지금 둘 수 있는 칸 (위험 표시가 없는 칸 우선)
+    /// 지금 둘 수 있는 칸 (위험 표시가 없는 칸 우선).
+    /// 한글 라벨은 NSPredicate CONTAINS로 걸러지지 않아 Swift 문자열로 거른다.
     private func playableCell() -> XCUIElement? {
         let enabled = NSPredicate(format: "identifier BEGINSWITH 'cell-' AND isEnabled == true")
-        let safe = NSPredicate(format: "NOT (label CONTAINS '위험') AND NOT (label CONTAINS 'danger')")
-        let safeCell = app.buttons.matching(NSCompoundPredicate(andPredicateWithSubpredicates: [enabled, safe])).firstMatch
-        if safeCell.exists { return safeCell }
-        let anyCell = app.buttons.matching(enabled).firstMatch
-        return anyCell.exists ? anyCell : nil
+        let cells = app.buttons.matching(enabled).allElementsBoundByIndex
+        let isDanger = { (cell: XCUIElement) in cell.label.contains("위험") || cell.label.contains("danger") }
+        return cells.first { !isDanger($0) } ?? cells.first
     }
 
     private var isGameOver: Bool { button(containing: "한 판 더").exists }
