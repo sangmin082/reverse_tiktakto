@@ -41,6 +41,7 @@ jobs:
             -project ReverseTicTacToe.xcodeproj \
             -scheme ReverseTicTacToe \
             -destination "id=$SIM_UDID" \
+            -skip-testing:ReverseTicTacToeUITests/StoreScreenshots \
             -resultBundlePath "$RUNNER_TEMP/ui.xcresult" \
             | grep -E "Test Case|error:|failed|passed|\*\*"
 

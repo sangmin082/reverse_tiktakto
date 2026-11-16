@@ -1,0 +1,58 @@
+name: Store screenshots
+
+# App Store 제출용 6.9" 스크린샷(1320×2868)을 만들어 아티팩트로 올린다.
+on:
+  workflow_dispatch:
+
+jobs:
+  screenshots:
+    runs-on: macos-26
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pick 6.9-inch simulator
+        run: |
+          udid=$(xcrun simctl list devices available -j | python3 -c '
+          import json, sys
+          devices = json.load(sys.stdin)["devices"]
+          phones = [d for runtime, ds in sorted(devices.items()) if "iOS" in runtime for d in ds
+                    if d["name"].startswith("iPhone") and "Pro Max" in d["name"]]
+          print(phones[-1]["udid"])
+          print(phones[-1]["name"], file=sys.stderr)
+          ')
+          echo "SIM_UDID=$udid" >> "$GITHUB_ENV"
+          xcrun simctl boot "$udid"
+          xcrun simctl status_bar "$udid" override --time "9:41" --dataNetwork wifi --wifiMode active --wifiBars 3 \
+            --cellularMode active --cellularBars 4 --batteryState charged --batteryLevel 100
+
+      - name: Take screenshots
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project ReverseTicTacToe.xcodeproj \
+            -scheme ReverseTicTacToe \
+            -destination "id=$SIM_UDID" \
+            -only-testing:ReverseTicTacToeUITests/StoreScreenshots \
+            -resultBundlePath "$RUNNER_TEMP/store.xcresult" \
+            | grep -E "Test Case|error:|failed|passed|\*\*"
+
+      - name: Export
+        if: always()
+        run: |
+          mkdir -p raw screenshots
+          xcrun xcresulttool export attachments --path "$RUNNER_TEMP/store.xcresult" --output-path raw || true
+          python3 - <<'PY'
+          import json, shutil
+          for test in json.load(open("raw/manifest.json")):
+              for a in test["attachments"]:
+                  name = a["suggestedHumanReadableName"].split("_")[0]
+                  shutil.copy(f"raw/{a['exportedFileName']}", f"screenshots/{name}.png")
+          PY
+          sips -g pixelWidth -g pixelHeight screenshots/*.png
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: store-screenshots
+          path: screenshots
