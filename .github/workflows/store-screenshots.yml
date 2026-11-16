@@ -33,27 +33,32 @@ jobs:
       - name: Take screenshots
         run: |
           set -o pipefail
-          xcodebuild test \
-            -project ReverseTicTacToe.xcodeproj \
-            -scheme ReverseTicTacToe \
-            -destination "id=$SIM_UDID" \
-            -only-testing:ReverseTicTacToeUITests/StoreScreenshots \
-            -resultBundlePath "$RUNNER_TEMP/store.xcresult" \
-            | grep -E "Test Case|error:|failed|passed|\*\*"
+          for lang in ko en; do
+            TEST_RUNNER_STORE_LANG=$lang xcodebuild test \
+              -project ReverseTicTacToe.xcodeproj \
+              -scheme ReverseTicTacToe \
+              -destination "id=$SIM_UDID" \
+              -only-testing:ReverseTicTacToeUITests/StoreScreenshots \
+              -resultBundlePath "$RUNNER_TEMP/store-$lang.xcresult" \
+              | grep -E "Test Case|error:|failed|passed|\*\*"
+          done
 
       - name: Export
         if: always()
         run: |
-          mkdir -p raw screenshots
-          xcrun xcresulttool export attachments --path "$RUNNER_TEMP/store.xcresult" --output-path raw || true
-          python3 - <<'PY'
-          import json, shutil
-          for test in json.load(open("raw/manifest.json")):
+          for lang in ko en; do
+            mkdir -p "raw-$lang" "screenshots/$lang"
+            xcrun xcresulttool export attachments --path "$RUNNER_TEMP/store-$lang.xcresult" --output-path "raw-$lang" || true
+            LANG_DIR=$lang python3 - <<'PY'
+          import json, os, shutil
+          lang = os.environ["LANG_DIR"]
+          for test in json.load(open(f"raw-{lang}/manifest.json")):
               for a in test["attachments"]:
                   name = a["suggestedHumanReadableName"].split("_")[0]
-                  shutil.copy(f"raw/{a['exportedFileName']}", f"screenshots/{name}.png")
+                  shutil.copy(f"raw-{lang}/{a['exportedFileName']}", f"screenshots/{lang}/{name}.png")
           PY
-          sips -g pixelWidth -g pixelHeight screenshots/*.png
+          done
+          sips -g pixelWidth -g pixelHeight screenshots/*/*.png
 
       - uses: actions/upload-artifact@v4
         if: always()
