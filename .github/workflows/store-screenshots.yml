@@ -3,6 +3,10 @@ name: Store screenshots
 # App Store 제출용 6.9" 스크린샷(1320×2868)을 만들어 아티팩트로 올린다.
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - "ReverseTicTacToeUITests/StoreScreenshots.swift"
+      - ".github/workflows/store-screenshots.yml"
 
 jobs:
   screenshots:
